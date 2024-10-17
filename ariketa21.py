@@ -7,6 +7,7 @@ zerrendaPortzentaia2=[]
 ekibalentzia=[]
 kont=0
 excluded_chars = {'.', ' ', ',', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'}
+
 #KARAKTERE ZENBAKETA
 for char in mezua:
     if char not in excluded_chars:
@@ -26,9 +27,16 @@ while(kont<len(zerrendaLetra)):
     zerrendaPortzentaia2.append(ehunekoa)
     ekibalentzia.append(letra)
     kont += 1
+
 # Find the closest match for each letter's percentage
 def find_closest_percentage(target, percentages):
     return min(percentages, key=lambda x: abs(x - target))
+    
+#MEZUA ORDENATU
+print("Letrak:", zerrendaLetra)
+print("Ehunekoak:", zerrendaPortzentaia)
+print("Letrak:", ekibalentzia)
+print("Ehunekoak:", zerrendaPortzentaia2)
 
 # Create a mapping of original letters to new letters based on closest percentages
 letter_mapping = {}
@@ -41,11 +49,7 @@ for original_letter, original_percentage in zip(zerrendaLetra, zerrendaPortzenta
     zerrendaPortzentaia2.pop(closest_letter_index)
     ekibalentzia.pop(closest_letter_index)
 
-#MEZUA ORDENATU
-print("Letrak:", ekibalentzia)
-print("Ehunekoak:", zerrendaPortzentaia2)
-print("Letrak:", zerrendaLetra)
-print("Ehuneko berriak:", zerrendaPortzentaia)
+print("Hurbileko portzentaiak:", letter_mapping)
 
 def swap_letters(text, letter1, letter2):
     temp_char = '\0'  # Temporary character for swapping
